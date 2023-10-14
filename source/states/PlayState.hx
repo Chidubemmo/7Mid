@@ -529,16 +529,20 @@ class PlayState extends MusicBeatState
 		reloadHealthBarColors();
 		add(healthBar);
 
-		iconP1 = new HealthIcon(boyfriend.healthIcon, true);
+		iconP1 = new HealthIcon(boyfriend.healthIcon, true, boyfriend.isIconAnimated);
 		iconP1.y = healthBar.y - 75;
 		iconP1.visible = !ClientPrefs.data.hideHud;
 		iconP1.alpha = ClientPrefs.data.healthBarAlpha;
+		iconP1.animation.addByPrefix('neutral', 'win', 24, true);
+		iconP1.animation.addByPrefix('lose', 'lose', 24, true);
 		add(iconP1);
 
-		iconP2 = new HealthIcon(dad.healthIcon, false);
+		iconP2 = new HealthIcon(dad.healthIcon, false, dad.isIconAnimated);//minor spelling mistake
 		iconP2.y = healthBar.y - 75;
 		iconP2.visible = !ClientPrefs.data.hideHud;
 		iconP2.alpha = ClientPrefs.data.healthBarAlpha;
+		iconP2.animation.addByPrefix('neutral', 'win', 24);
+		iconP2.animation.addByPrefix('lose', 'lose', 24);
 		add(iconP2);
 
 		scoreTxt = new FlxText(0, healthBar.y + 40, FlxG.width, "", 20);
@@ -1641,8 +1645,37 @@ class PlayState extends MusicBeatState
 		if (health > 2) health = 2;
 		iconP1.x = healthBar.barCenter + (150 * iconP1.scale.x - 150) / 2 - iconOffset;
 		iconP2.x = healthBar.barCenter - (150 * iconP2.scale.x) / 2 - iconOffset * 2;
-		iconP1.animation.curAnim.curFrame = (healthBar.percent < 20) ? 1 : 0;
-		iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0;
+		FlxG.log.warn('Health Percentage: '+ healthBar.percent);
+		if (iconP1.isIconAnimatedd == false)
+			{
+				iconP1.animation.curAnim.curFrame = (healthBar.percent < 20) ? 1 : 0;
+			}
+			else
+				{
+					if(healthBar.percent < 20)
+						{
+							iconP1.animation.play('lose');
+						}
+					else
+						{
+							iconP1.animation.play('neutral');
+						}
+				}
+		if (iconP2.isIconAnimatedd == false)
+			{
+				iconP2.animation.curAnim.curFrame = (healthBar.percent > 80) ? 1 : 0;
+			}
+			else
+				{
+					if(healthBar.percent > 80)
+						{
+							iconP1.animation.play('lose');
+						}
+					else
+						{
+							iconP1.animation.play('neutral');
+						}
+				}
 
 		if (controls.justPressed('debug_2') && !endingSong && !inCutscene)
 			openCharacterEditor();
@@ -2274,7 +2307,7 @@ class PlayState extends MusicBeatState
 			#if !switch
 			var percent:Float = ratingPercent;
 			if(Math.isNaN(percent)) percent = 0;
-			Highscore.saveScore(SONG.song, songScore, storyDifficulty, percent);
+			Highscore.saveScore(SONG.song, songScore, storyDifficulty, percent, ratingFC);
 			#end
 			playbackRate = 1;
 

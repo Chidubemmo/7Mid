@@ -107,7 +107,7 @@ class CharacterEditorState extends MusicBeatState
 		
 		if(ClientPrefs.data.cacheOnGPU) Paths.clearUnusedMemory();
 
-		leHealthIcon = new HealthIcon(char.healthIcon, false, false);
+		leHealthIcon = new HealthIcon(char.healthIcon, false, char.isIconAnimated, false);
 		leHealthIcon.y = FlxG.height - 150;
 		add(leHealthIcon);
 		leHealthIcon.cameras = [camHUD];
@@ -381,6 +381,7 @@ class CharacterEditorState extends MusicBeatState
 				0
 			],
 			"healthicon": "face",
+			"isIconAnimated": false,
 			"flip_x": false,
 			"healthbar_colors": [
 				161,
@@ -454,6 +455,7 @@ class CharacterEditorState extends MusicBeatState
 				character.originalFlipX = parsedJson.flip_x;
 				character.healthIcon = parsedJson.healthicon;
 				character.healthColorArray = parsedJson.healthbar_colors;
+				character.isIconAnimated = parsedJson.isIconAnimated;
 				character.setPosition(character.positionArray[0] + OFFSET_X + 100, character.positionArray[1]);
 			}
 
@@ -492,6 +494,7 @@ class CharacterEditorState extends MusicBeatState
 	var healthColorStepperR:FlxUINumericStepper;
 	var healthColorStepperG:FlxUINumericStepper;
 	var healthColorStepperB:FlxUINumericStepper;
+	var animatedIconCheckbox:FlxUICheckBox;
 
 	function addCharacterUI() {
 		var tab_group = new FlxUI(null, UI_box);
@@ -535,6 +538,11 @@ class CharacterEditorState extends MusicBeatState
 			ghostChar.flipX = char.flipX;
 		};
 
+		
+		animatedIconCheckbox = new FlxUICheckBox(healthIconInputText.x + 80, healthIconInputText.y, null, null, "Is the icon Animated", 50);
+		char.isIconAnimated = animatedIconCheckbox.checked;
+		
+
 		noAntialiasingCheckBox = new FlxUICheckBox(flipXCheckBox.x, flipXCheckBox.y + 40, null, null, "No Antialiasing", 80);
 		noAntialiasingCheckBox.checked = char.noAntialiasing;
 		noAntialiasingCheckBox.callback = function() {
@@ -574,6 +582,7 @@ class CharacterEditorState extends MusicBeatState
 		tab_group.add(singDurationStepper);
 		tab_group.add(scaleStepper);
 		tab_group.add(flipXCheckBox);
+		tab_group.add(animatedIconCheckbox);
 		tab_group.add(noAntialiasingCheckBox);
 		tab_group.add(positionXStepper);
 		tab_group.add(positionYStepper);
@@ -1252,6 +1261,7 @@ class CharacterEditorState extends MusicBeatState
 			"scale": char.jsonScale,
 			"sing_duration": char.singDuration,
 			"healthicon": char.healthIcon,
+			"isIconAnimated": char.isIconAnimated,
 
 			"position":	char.positionArray,
 			"camera_position": char.cameraPosition,

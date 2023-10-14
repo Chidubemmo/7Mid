@@ -10,6 +10,8 @@ after it finishes, simply type `haxelib run hmm install` in order to install all
 
 If the compiler gives an error saying that hxCodec cannot be found read this issue to fix it: ShadowMario/FNF-PsychEngine#12770
 
+You will have to install SScript using ```haxelib git linc_luajit https://github.com/superpowers04/linc_luajit master```
+
 ## Customization:
 
 if you wish to disable things like *Lua Scripts* or *Video Cutscenes*, you can read over to `Project.xml`

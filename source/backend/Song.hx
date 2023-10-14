@@ -18,6 +18,7 @@ typedef SwagSong =
 	var bpm:Float;
 	var needsVoices:Bool;
 	var speed:Float;
+	var artistName:String;
 
 	var player1:String;
 	var player2:String;
@@ -54,9 +55,14 @@ class Song
 	public var player1:String = 'bf';
 	public var player2:String = 'dad';
 	public var gfVersion:String = 'gf';
+	var artistName:String;
 
 	private static function onLoadJson(songJson:Dynamic) // Convert old charts to newest format
 	{
+		if(songJson.artistName == null)
+			{
+				songJson.artistName = "Unknown Artist";
+			}
 		if(songJson.gfVersion == null)
 		{
 			songJson.gfVersion = songJson.player3;

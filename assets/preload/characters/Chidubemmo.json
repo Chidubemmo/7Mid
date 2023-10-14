@@ -1,0 +1,122 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				1,
+				-90
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "idle",
+			"indices": [],
+			"name": "idle"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				108,
+				-90
+			],
+			"anim": "singLEFT",
+			"fps": 24,
+			"name": "left0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				31,
+				-90
+			],
+			"anim": "singDOWN",
+			"fps": 24,
+			"name": "down0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				27,
+				-34
+			],
+			"anim": "singUP",
+			"fps": 24,
+			"name": "up0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				-10,
+				-90
+			],
+			"anim": "singRIGHT",
+			"fps": 24,
+			"name": "right0",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				256,
+				29
+			],
+			"anim": "singLEFT-alt",
+			"fps": 24,
+			"name": "left-alt",
+			"indices": []
+		},
+		{
+			"loop": false,
+			"offsets": [
+				110,
+				-90
+			],
+			"anim": "singDOWN-alt",
+			"fps": 24,
+			"name": "down-alt",
+			"indices": []
+		},
+		{
+			"offsets": [
+				0,
+				-50
+			],
+			"loop": false,
+			"fps": 24,
+			"anim": "singRIGHT-alt",
+			"indices": [],
+			"name": "right-alt"
+		},
+		{
+			"loop": false,
+			"offsets": [
+				0,
+				-50
+			],
+			"anim": "singUP-alt",
+			"fps": 24,
+			"name": "up-alt",
+			"indices": []
+		}
+	],
+	"no_antialiasing": false,
+	"image": "characters/Chidubemmo",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "icon-chidu",
+	"flip_x": false,
+	"healthbar_colors": [
+		89,
+		100,
+		255
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 6.1,
+	"scale": 1
+}
