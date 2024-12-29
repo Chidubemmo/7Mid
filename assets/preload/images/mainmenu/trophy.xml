@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="trophy.png">
+	<!-- Created with Adobe Animate version 22.0.8.217 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="throphy selected0000" x="0" y="0" width="227" height="166"/>
+	<SubTexture name="throphy selected0001" x="0" y="0" width="227" height="166"/>
+	<SubTexture name="throphy selected0002" x="227" y="0" width="227" height="166"/>
+	<SubTexture name="throphy selected0003" x="227" y="0" width="227" height="166"/>
+	<SubTexture name="trophy0000" x="0" y="166" width="148" height="120"/>
+</TextureAtlas>
